@@ -5,17 +5,131 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="https://cdn.bootcss.com/es6-shim/0.35.3/es6-shim.min.js"></script>
+    <script src="https://cdn.bootcss.com/dom4/1.8.5/dom4.js"></script>
+    <script>
+        // Caution! Prototype extending
+        Node.prototype.AuiIsVisible = function() {
+            return !!( this.offsetWidth || this.offsetHeight || this.getClientRects().length );
+        };
+
+        Node.prototype.AuifindSelectorAllFromChildren = function(selector) {
+            if (/(^\s*|,\s*)>/.test(selector)) {
+                if (!this.id) {
+                    this.id = 'ID_' + new Date().getTime();
+                    var removeId = true;
+                }
+                selector = selector.replace(/(^\s*|,\s*)>/g, '$1#' + this.id + ' >');
+                var result = document.querySelectorAll(selector);
+                if (removeId) {
+                    this.id = null;
+                }
+                return result;
+            } else {
+                return this.querySelectorAll(selector);
+            }
+        };
+
+        Node.prototype.AuifindSelectorFromChildren = function(selector) {
+            var res = this.AuifindSelectorAllFromChildren(selector);
+            if (res.length < 1) {
+                return null;
+            }
+            return res[0];
+        };
+
+        // dataset polyfill
+        /*
+         * Xccessors Standard: Cross-browser ECMAScript 5 accessors
+         * http://purl.eligrey.com/github/Xccessors
+         *
+         * 2010-06-21
+         *
+         * By Eli Grey, http://eligrey.com
+         *
+         * A shim that partially implements Object.defineProperty,
+         * Object.getOwnPropertyDescriptor, and Object.defineProperties in browsers that have
+         * legacy __(define|lookup)[GS]etter__ support.
+         *
+         * Licensed under the X11/MIT License
+         *   See LICENSE.md
+         */
+
+        // Begin dataset code
+
+        if (!document.documentElement.dataset &&
+                // FF is empty while IE gives empty object
+                (!Object.getOwnPropertyDescriptor(Element.prototype, 'dataset')  ||
+                !Object.getOwnPropertyDescriptor(Element.prototype, 'dataset').get)
+        ) {
+            var propDescriptor = {
+                enumerable: true,
+                get: function () {
+                    'use strict';
+                    var i,
+                            that = this,
+                            HTML5_DOMStringMap,
+                            attrVal, attrName, propName,
+                            attribute,
+                            attributes = this.attributes,
+                            attsLength = attributes.length,
+                            toUpperCase = function (n0) {
+                                return n0.charAt(1).toUpperCase();
+                            },
+                            getter = function () {
+                                return this;
+                            },
+                            setter = function (attrName, value) {
+                                return (typeof value !== 'undefined') ?
+                                        this.setAttribute(attrName, value) :
+                                        this.removeAttribute(attrName);
+                            };
+                    try { // Simulate DOMStringMap w/accessor support
+                        // Test setting accessor on normal object
+                        ({}).__defineGetter__('test', function () {});
+                        HTML5_DOMStringMap = {};
+                    }
+                    catch (e1) { // Use a DOM object for IE8
+                        HTML5_DOMStringMap = document.createElement('div');
+                    }
+                    for (i = 0; i < attsLength; i++) {
+                        attribute = attributes[i];
+                        // Fix: This test really should allow any XML Name without
+                        //         colons (and non-uppercase for XHTML)
+                        if (attribute && attribute.name &&
+                                (/^data-\w[\w\-]*$/).test(attribute.name)) {
+                            attrVal = attribute.value;
+                            attrName = attribute.name;
+                            // Change to CamelCase
+                            propName = attrName.substr(5).replace(/-./g, toUpperCase);
+                            try {
+                                Object.defineProperty(HTML5_DOMStringMap, propName, {
+                                    enumerable: this.enumerable,
+                                    get: getter.bind(attrVal || ''),
+                                    set: setter.bind(that, attrName)
+                                });
+                            }
+                            catch (e2) { // if accessors are not working
+                                HTML5_DOMStringMap[propName] = attrVal;
+                            }
+                        }
+                    }
+                    return HTML5_DOMStringMap;
+                }
+            };
+            try {
+                // FF enumerates over element's dataset, but not
+                //   Element.prototype.dataset; IE9 iterates over both
+                Object.defineProperty(Element.prototype, 'dataset', propDescriptor);
+            } catch (e) {
+                propDescriptor.enumerable = false; // IE8 does not allow setting to true
+                Object.defineProperty(Element.prototype, 'dataset', propDescriptor);
+            }
+        }    
+    </script>
 </head>
 <body>
-    thank for dajia
-    <button>测试更新</button>
-    <script>
-        // Android需要调用的方法
-        function callJS(){
-            alert("call from native");
-            return "call from js";
-        }
-    </script>    
+    <div id="app"></div>
     <!-- built files will be auto injected -->    
 </body>
 </html>
