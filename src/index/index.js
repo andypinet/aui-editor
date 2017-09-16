@@ -10,7 +10,7 @@ iconbuttons.bold = `
 `;
 
 iconbuttons.italic = `
-<button type="button" class="aui-button">
+<button type="button" class="aui-button" editor-action="italic">
     <svg viewBox="0 0 10 14" class="aui-icon aui-icon--italic" width="14" height="14" aria-hidden="true" style="height: 14px; width: 14px;"><title></title><g><path d="M8.75 0h-5.5c-.412 0-.75.336-.75.75 0 .417.336.75.75.75H5l-2 11H1.25c-.412 0-.75.336-.75.75 0 .417.336.75.75.75h5.5c.412 0 .75-.336.75-.75 0-.417-.335-.75-.75-.75H5l2-11h1.75c.412 0 .75-.336.75-.75C9.5.333 9.165 0 8.75 0" fill-rule="evenodd"></path></g></svg>
 </button>
 `;
@@ -34,13 +34,13 @@ iconbuttons.code = `
 `;
 
 iconbuttons.insertOrderedList = `
-<button type="button" class="aui-button">
+<button type="button" class="aui-button" editor-action="insertOrderedList">
     <svg viewBox="0 0 14 14" class="aui-icon aui-icon--insertOrderedList" width="14" height="14" aria-hidden="true" style="height: 14px; width: 14px;"><title></title><g><path d="M4 1.5c0-.552.456-1 .995-1h8.01c.55 0 .995.444.995 1 0 .552-.456 1-.995 1h-8.01c-.55 0-.995-.444-.995-1zM.884 2.893h.803V0H.403l-.16.804h.642v2.09zm.898 3.83c.362-.362.468-.57.468-.878 0-.488-.482-.945-1.125-.945S0 5.33 0 5.974h.707c0-.225.13-.43.418-.43.26 0 .4.165.396.367 0 .14-.09.26-.46.57L0 7.37v.48h2.25v-.73h-.86l.392-.396zM4 6.5c0-.552.456-1 .995-1h8.01c.55 0 .995.444.995 1 0 .552-.456 1-.995 1h-8.01c-.55 0-.995-.444-.995-1zm0 5c0-.552.456-1 .995-1h8.01c.55 0 .995.444.995 1 0 .552-.456 1-.995 1h-8.01c-.55 0-.995-.444-.995-1zm-1.76.624c0 .14-.024.27-.075.388-.05.12-.123.222-.217.31-.093.086-.205.154-.336.204-.13.05-.275.074-.437.074-.166 0-.32-.027-.462-.08-.142-.053-.265-.126-.367-.217-.103-.09-.185-.197-.246-.318-.062-.12-.095-.248-.1-.38v-.055h.765v.054c0 .1.033.183.1.25.066.068.155.102.267.102.117 0 .207-.03.27-.09.062-.06.093-.152.093-.277 0-.12-.04-.21-.117-.27-.078-.06-.185-.09-.32-.09h-.14v-.52h.144c.117 0 .205-.03.264-.09.058-.06.087-.14.087-.23 0-.087-.03-.157-.087-.21-.06-.05-.136-.08-.233-.08-.107 0-.185.03-.236.08-.05.053-.076.12-.076.2v.053H.09v-.055c.018-.267.116-.48.295-.643.18-.16.437-.24.776-.24.14 0 .27.02.39.062s.23.1.31.174c.09.074.16.16.21.26.05.1.08.208.08.32 0 .258-.116.46-.35.605v.005c.074.03.138.068.194.12.056.05.103.106.14.167.04.06.067.126.087.196.02.07.03.14.03.207z" fill-rule="evenodd"></path></g></svg>
 </button>
 `;
 
 iconbuttons.insertUnorderedList = `
-<button type="button" class="aui-button">
+<button type="button" class="aui-button" editor-action="insertUnorderedList">
     <svg viewBox="0 0 14 13" class="aui-icon aui-icon--insertUnorderedList" width="14" height="14" aria-hidden="true" style="height: 14px; width: 14px;"><title></title><g><path d="M4 1c0-.552.456-1 .995-1h8.01c.55 0 .995.444.995 1 0 .552-.456 1-.995 1h-8.01C4.445 2 4 1.556 4 1zM1 2c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1zm0 5c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1zm0 5c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1zm3-6c0-.552.456-1 .995-1h8.01c.55 0 .995.444.995 1 0 .552-.456 1-.995 1h-8.01C4.445 7 4 6.556 4 6zm0 5c0-.552.456-1 .995-1h8.01c.55 0 .995.444.995 1 0 .552-.456 1-.995 1h-8.01C4.445 12 4 11.556 4 11z" fill-rule="evenodd"></path></g></svg>
 </button>
 `;
@@ -76,19 +76,19 @@ iconbuttons.editable_divider = `
 `;
 
 iconbuttons.strikethrough = `
-<button type="button" class="aui-button">
+<button type="button" class="aui-button" editor-action="strikethrough">
     <svg viewBox="0 0 1024 1024" class="aui-icon aui-icon--strikethrough" width="18" height="18"><defs><style type="text/css"></style></defs><path d="M108.912014 480.419747l812.044634 0 0 63.160505-812.044634 0 0-63.160505Z" p-id="2709"></path><path d="M623.794667 586.232678c1.992377 0.960885 3.835352 1.89721 5.514597 2.797719 20.8734 11.234879 36.491099 25.64303 46.837748 43.214221 10.348696 17.572214 15.523555 38.132482 15.523555 61.679781 0 40.219004-14.256702 72.9208-42.754756 98.103342-28.508287 25.182542-68.540026 37.766139-120.092146 37.766139-35.945677 0-68.266803-7.437389-96.945983-22.328541-28.688389-14.886035-50.746778-34.586726-66.174142-59.093886-15.436574-24.509207-25.325805-58.730613-29.683043-102.664218l-81.69565 8.714476c1.811252 83.149768 26.77276 149.050688 74.888618 197.703781 48.105624 48.659233 112.645546 72.982198 193.617719 72.982198 51.918463 0 96.306416-9.79304 133.165906-29.378098 36.84721-19.589151 65.98483-48.149627 87.414909-85.687568 21.417799-37.536918 32.131815-79.156828 32.131815-124.859729 0-37.188994-6.67912-70.158896-19.966751-98.950639L623.794667 586.231655z" p-id="2710"></path><path d="M314.341756 437.768345l198.312648 0c-62.752206-17.674545-103.296621-35.153638-121.617895-52.420907-18.892279-17.788132-28.328185-42.832528-28.328185-75.152631 0-34.849716 12.884448-63.252603 38.669718-85.218894 25.775037-21.966291 63.177901-32.95046 112.196315-32.95046 48.285726 0 85.779665 12.526291 112.467491 37.579897 26.687826 25.052582 42.209334 63.542198 46.566572 115.463732l83.32987-7.625678c-1.457188-48.653093-12.254092-90.954525-32.406061-126.900202-20.151969-35.9467-48.472991-63.535035-84.962044-82.785471-36.491099-19.243273-79.068823-28.866445-127.717823-28.866445-70.804602 0-127.089513 20.515243-168.839383 61.545728-41.760103 41.035602-62.634526 93.863784-62.634526 158.489664 0 35.945677 7.258311 68.171636 21.786189 96.67276C305.118698 423.36531 309.518914 430.748465 314.341756 437.768345z" p-id="2711"></path></svg>
 </button>
 `;
 
-iconbuttons.formatClear = `
-<button type="button" class="aui-button">
-    <svg width="16" height="14" viewBox="0 0 15 14" class="aui-icon aui-icon--formatClear" aria-hidden="true" style="height: 14px; width: 16px;"><title></title><g><path fill-rule="evenodd" d="M4.864 7.83l1.64 1.642-1.17 2.874c-.262.644-.89 1.062-1.585 1.055-.1 0-.2-.02-.29-.054-.4-.163-.59-.62-.43-1.02L4.864 7.83zM6.5 3.81L7.24 2H4.69l-2-2h10.672c.552 0 1 .448 1 1s-.448 1-1 1H9.55L8.142 5.452 6.5 3.812zM.294 1.846c.39-.39 1.024-.39 1.414 0L11.753 11.89c.39.392.39 1.025 0 1.415-.39.39-1.024.39-1.414 0L.29 3.26c-.39-.39-.39-1.024 0-1.415z"></path></g></svg>
+iconbuttons.removeFormat = `
+<button type="button" class="aui-button" editor-action="removeFormat">
+    <svg width="16" height="14" viewBox="0 0 15 14" class="aui-icon aui-icon--removeFormat" aria-hidden="true" style="height: 14px; width: 16px;"><title></title><g><path fill-rule="evenodd" d="M4.864 7.83l1.64 1.642-1.17 2.874c-.262.644-.89 1.062-1.585 1.055-.1 0-.2-.02-.29-.054-.4-.163-.59-.62-.43-1.02L4.864 7.83zM6.5 3.81L7.24 2H4.69l-2-2h10.672c.552 0 1 .448 1 1s-.448 1-1 1H9.55L8.142 5.452 6.5 3.812zM.294 1.846c.39-.39 1.024-.39 1.414 0L11.753 11.89c.39.392.39 1.025 0 1.415-.39.39-1.024.39-1.414 0L.29 3.26c-.39-.39-.39-1.024 0-1.415z"></path></g></svg>
 </button>
 `;
 
 var icons = `${iconbuttons.bold}${iconbuttons.italic}${iconbuttons.strikethrough}
-${iconbuttons.insertOrderedList}${iconbuttons.insertUnorderedList}${iconbuttons.formatClear}`;
+${iconbuttons.insertOrderedList}${iconbuttons.insertUnorderedList}${iconbuttons.removeFormat}`;
 
 let UiExampleEditor =  {
     template:  `<div class="" >
@@ -107,16 +107,54 @@ let UiExampleEditor =  {
 </div>`
 }
 
+function initBasicCommand(wysiwygeditor, event, name, action) {
+    var selector = `[editor-action="${name}"]`;
+    if (event.target.matches(selector) || event.target.parentNode.matches(selector)) {        
+        if (action) {
+            action();
+        } else {
+            wysiwygeditor.shell[name]();
+        }
+        event.stopPropagation();
+    }   
+}
+
 function initToolBar(wysiwygeditor, $refs, options) {
     var dom = {};
     dom.toolbar = $refs.editor.AuifindSelectorFromChildren(".app-toolbar");
 
     dom.toolbar.addEventListener("click", function(event) {
-        if (event.target.matches('[editor-action="bold"]') || event.target.parentNode.matches('[editor-action="bold"]')) {
-            wysiwygeditor.shell.bold();
-            event.stopPropagation();
-        }    
+        initBasicCommand(wysiwygeditor, event, 'bold');
+        initBasicCommand(wysiwygeditor, event, 'italic');
+        initBasicCommand(wysiwygeditor, event, 'strikethrough');
+        initBasicCommand(wysiwygeditor, event, 'insertOrderedList', function() {
+            // fix no keydown 
+            wysiwygeditor.dom.placeholder.style.display = "none";
+            wysiwygeditor.shell.insertList(true);
+        });
+        initBasicCommand(wysiwygeditor, event, 'insertUnorderedList', function() {
+            // fix no keydown 
+            wysiwygeditor.dom.placeholder.style.display = "none";
+            wysiwygeditor.shell.insertList(false);
+        });
+        initBasicCommand(wysiwygeditor, event, 'removeFormat');
     });
+}
+
+function togglePlaceHolder(editorshell, $refs, options) {
+    var html = editorshell.getHTML();
+    
+    console.log('------------------------------------');
+    console.log(html);
+    console.log('------------------------------------');
+
+    if (html.length < 1 ||
+        html.replace(/<br\s*[\/]?>/gi,'').length < 1 ||
+        html.replace(/<div><br\s*[\/]?><\/div>/gi,'').length < 1) {
+        $refs.editor.querySelector(".wysiwyg-placeholder").style.display = "block";
+    } else {
+        $refs.editor.querySelector(".wysiwyg-placeholder").style.display = "none";
+    }
 }
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -140,11 +178,11 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     
     initToolBar(wysiwygeditor, $refs, {});
-    
+
+
     var editorshell = wysiwygeditor.shell;
-    $refs.textarea.addEventListener("change", function() {
-        if( typeof console != 'undefined' )
-            ;//console.log( 'change' );
+    $refs.textarea.addEventListener("change", function() {    
+        // togglePlaceHolder(editorshell, $refs, {});
     });
     $refs.textarea.addEventListener("focus", function() {
         if( typeof console != 'undefined' )
@@ -152,23 +190,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
     $refs.textarea.addEventListener("blur", function() {
         if( typeof console != 'undefined' );//console.log( 'blur' );
-
-        var html = editorshell.getHTML();
-
-        // console.log('------------------------------------');
-        // console.log(html);
-        // console.log('------------------------------------');
-
-        console.log('------------------------------------');
-        console.log(html.replace(/<div><br\s*[\/]?><\/div>/gi,''));
-        console.log('------------------------------------');
-
-        if (html.length < 1 ||
-            html.replace(/<br\s*[\/]?>/gi,'').length < 1 ||
-            html.replace(/<div><br\s*[\/]?><\/div>/gi,'').length < 1) {
-                $refs.editor.querySelector(".wysiwyg-placeholder").style.display = "block";
-        }
-
+        togglePlaceHolder(editorshell, $refs, {});
     });
 
     editorshell.readOnly( false );

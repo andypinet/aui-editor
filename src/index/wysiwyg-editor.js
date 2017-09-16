@@ -68,8 +68,7 @@
                 element: textarea,
                 contenteditable: editor ? editor : null,
                 onKeyDown: function( key, character, shiftKey, altKey, ctrlKey, metaKey ) {
-                  // switch( key )
-                        // {
+                        // switch( key ) {
                         //     case  8: // backspace                                
                         //     case 16: // shift
                         //     case 18: // option
