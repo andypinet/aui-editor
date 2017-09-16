@@ -211,7 +211,7 @@
 
         // Export userdata
         return {
-            wysiwygeditor: wysiwygeditor,
+            shell: wysiwygeditor,
             dom: dom
         };
     };
