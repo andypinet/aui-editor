@@ -4,6 +4,8 @@ no jquery dep
 
 thanks https://github.com/wysiwygjs/wysiwyg.js
 
+[demo](https://static.zhilizhili.com/static/aui/editor/)
+
 感谢wysiwyg.js  不过原来editor部分代码需要jquery  现在改用原生js
 
 ##### use
