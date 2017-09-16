@@ -14,17 +14,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andypinet/webpack3-simple-webapptpl.git"
+    "url": "git+https://github.com/andypinet/aui-editor.git"
   },
   "keywords": [
-    "webpack3-simple-webapptpl"
+    "aui-editor"
   ],
   "author": "lbc19920615",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/andypinet/webpack3-simple-webapptpl/issues"
+    "url": "https://github.com/andypinet/aui-editor/issues"
   },
-  "homepage": "https://github.com/andypinet/webpack3-simple-webapptpl#readme",
+  "homepage": "https://github.com/andypinet/aui-editor#readme",
   "devDependencies": {
     "@std/esm": "^0.5.1",
     "autoprefixer": "^7.1.2",
@@ -73,8 +73,5 @@
     "url-loader": "^0.5.9",
     "webpack": "^3.5.3",
     "yargs": "^8.0.2"
-  },
-  "dependencies": {
-    "tinycolor2": "^1.4.1"
   }
 }

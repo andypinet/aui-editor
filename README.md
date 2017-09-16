@@ -1,4 +1,10 @@
-### a webpack3 simple webapp template
+### a simple editor
+
+no jquery dep
+
+thanks https://github.com/wysiwygjs/wysiwyg.js
+
+感谢wysiwyg.js  不过原来editor部分代码需要jquery  现在改用原生js
 
 ##### use
 
@@ -23,15 +29,6 @@ npm run server
 如何安装node-sass
 
 https://github.com/andypinet/blog/issues/2
-
-##### feature
-
-1. scss support
-2. postcss support
-3. es6 support
-4. font support
-5. multi page support  
-    - in config.js change page 
 
 ##### dev
 
