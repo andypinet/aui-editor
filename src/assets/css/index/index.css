@@ -13,7 +13,6 @@
   overflow: visible;
   color: #1c2b36;
   background: none white;
-  border-top: 1px solid #99A9BF;
   padding: 3px 7px; }
 .aui-editor .wysiwyg-textarea {
   display: block;
@@ -42,10 +41,21 @@
   /* https://developer.mozilla.org/de/docs/Web/CSS/%3A%3A-moz-placeholder */
   line-height: 1; }
 
-.aui-editor--mystyle .app-toolbar .aui-button {
-  vertical-align: middle;
-  text-align: center;
-  padding: 7px 7px 5px;
-  line-height: 1; }
-  .aui-editor--mystyle .app-toolbar .aui-button svg {
-    fill: #8492A6; }
+.aui-editor--mystyle .app-toolbar {
+  border-bottom: 1px solid #99A9BF; }
+  .aui-editor--mystyle .app-toolbar .aui-button {
+    vertical-align: middle;
+    text-align: center;
+    padding: 7px 7px 5px;
+    line-height: 1; }
+    .aui-editor--mystyle .app-toolbar .aui-button svg {
+      fill: #8492A6; }
+.aui-editor .wysiwyg-editor > p:first-child {
+  margin: 0;
+  display: block; }
+.aui-editor .wysiwyg-editor > p:first-child + p {
+  margin: 0;
+  display: block; }
+.aui-editor__row {
+  margin: 0;
+  display: block; }

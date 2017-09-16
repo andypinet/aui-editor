@@ -1040,8 +1040,7 @@
 
         // Key events
         // http://sandbox.thewikies.com/html5-experiments/key-events.html
-        var keyHandler = function( e, phase )
-        {
+        var keyHandler = function( e, phase ) {
             // http://www.quirksmode.org/js/events_properties.html
             if( !e )
                 var e = window.event;
@@ -1058,19 +1057,19 @@
              if( phase == 1 )
             {
                 // Callback
-                if( option_onkeydown && option_onkeydown(key, character, shiftKey, altKey, ctrlKey, metaKey) === false )
+                if( option_onkeydown && option_onkeydown(key, character, shiftKey, altKey, ctrlKey, metaKey, e) === false )
                     return cancelEvent( e ); // dismiss key
             }
             else if( phase == 2 )
             {
                 // Callback
-                if( option_onkeypress && option_onkeypress(key, character, shiftKey, altKey, ctrlKey, metaKey) === false )
+                if( option_onkeypress && option_onkeypress(key, character, shiftKey, altKey, ctrlKey, metaKey, e) === false )
                     return cancelEvent( e ); // dismiss key
             }
             else if( phase == 3 )
             {
                 // Callback
-                if( option_onkeyup && option_onkeyup(key, character, shiftKey, altKey, ctrlKey, metaKey) === false )
+                if( option_onkeyup && option_onkeyup(key, character, shiftKey, altKey, ctrlKey, metaKey, e) === false )
                     return cancelEvent( e ); // dismiss key
             }
 
@@ -1264,20 +1263,19 @@
             }
         };
         // Command structure
-        callUpdates = function( selection_destroyed )
-        {
+        callUpdates = function( selection_destroyed ) {
             // Remove IE11 workaround
-            if( trailingDiv )
-            {
-                node_wysiwyg.removeChild( trailingDiv );
+            if( trailingDiv ) {                
+                if (node_wysiwyg) {
+                    node_wysiwyg.removeChild( trailingDiv );
+                }
                 trailingDiv = null;
             }
             // change-handler
             if( debounced_changeHandler )
                 debounced_changeHandler();
             // handle saved selection
-            if( selection_destroyed )
-            {
+            if( selection_destroyed ) {
                 collapseSelectionEnd();
                 popup_saved_selection = null; // selection destroyed
             }

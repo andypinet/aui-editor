@@ -14,7 +14,6 @@
         overflow: visible;
         color: $aui-brand-black;
         background: none white;
-        border-top: 1px solid $aui-brand-light-sliver;
         padding: 3px 7px;
     }
 
@@ -53,6 +52,7 @@
 .aui-editor {
     &--mystyle {
         .app-toolbar {
+            border-bottom: 1px solid $aui-brand-light-sliver;
             .aui-button {
                 vertical-align: middle;
                 text-align: center;
@@ -63,5 +63,20 @@
                 }
             }
         }
+    }
+    .wysiwyg-editor {
+        // ie bug
+        > p:first-child {
+            margin: 0;
+            display: block;
+        }
+        > p:first-child + p {
+            margin: 0;
+            display: block;
+        }
+    }
+    &__row {
+        margin: 0;
+        display: block;
     }
 }

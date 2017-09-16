@@ -11,7 +11,61 @@
         });
     };
 
+    function previousNode(node) {
+        var previous = node.previousSibling;
+        if (previous) {
+            node = previous;
+            while (node && node.hasChildNodes && node.hasChildNodes()) {
+                node = node.lastChild;
+            }
+            return node;
+        }
+        var parent = node.parentNode;
+        if (parent && parent.nodeType && parent.hasChildNodes && parent.hasChildNodes()) {
+            return parent;
+        }
+        return null;
+    }
 
+    function CssFnctn(editor) {
+        document.execCommand('formatblock', false, 'p')
+
+        var sel = window.getSelection();
+        if (sel.rangeCount > 0) {
+            var range = sel.getRangeAt(0);
+            var node = range.startContainer;
+            if (node.hasChildNodes() && range.startOffset > 0) {
+                node = node.childNodes[range.startOffset - 1];
+            }
+        
+            // Walk backwards through the DOM until we find an image
+            while (node) {
+                if (node.nodeType == 1 && node.tagName.toLowerCase()  == "p") {
+                    console.log(node);
+                    node.className = "aui-editor__row";
+                    break;
+                }
+                node = previousNode(node);
+            }
+        }
+
+        // var row = window.getSelection().focusNode.parentNode;
+        // if (row.className && row.className.indexOf("wysiwyg-editor") > -1) {
+        //     // setTimeout(function() {
+        //     //     row.children[0].className = "aui-editor__row";
+        //     // }, 0)
+        //     // if (row.children && row.children[0] && row.children[0].className.indexOf("aui-editor__row") < 0) {
+        //     //     console.log(row);
+        //     //     row.children[0].className = "aui-editor__row";
+        //     // }
+        //     console.log('------------------------------------');
+        //     console.log(window.getSelection().focusNode);
+        //     console.log('------------------------------------');
+        //     // window.getSelection().focusNode.className = "aui-editor__row"
+        // } else {        
+        //     row.className = "aui-editor__row";
+        // }     
+    }
 
     // Create the Editor
     var create_editor = function( textarea, classes, placeholder, toolbar_position, toolbar_buttons, toolbar_submit, label_selectImage,
@@ -27,11 +81,12 @@
                 if( ! on_autocomplete )
                     return ;
                 var typed = autocomplete || '';
+
                 switch( key ) {
                     case  8: // backspace
                         typed = typed.substring( 0, typed.length - 1 );
                         // fall through
-                    case 13: // enter
+                    case 13: // enter      
                     case 27: // escape
                     case 33: // pageUp
                     case 34: // pageDown
@@ -67,26 +122,36 @@
             var option = {
                 element: textarea,
                 contenteditable: editor ? editor : null,
-                onKeyDown: function( key, character, shiftKey, altKey, ctrlKey, metaKey ) {
-                        // switch( key ) {
-                        //     case  8: // backspace                                
-                        //     case 16: // shift
-                        //     case 18: // option
-                        //     case 27: // escape
-                        //     case 33: // pageUp
-                        //     case 34: // pageDown
-                        //     case 35: // end
-                        //     case 36: // home
-                        //     case 37: // left
-                        //     case 38: // up
-                        //     case 39: // right
-                        //     case 40: // down
-                        //     case 91: // control
-                        //         break;
+                onKeyDown: function( key, character, shiftKey, altKey, ctrlKey, metaKey, e) {
+                    
+                        switch( key ) {
+                            case  8: // backspace                                
+                            case 13: // enter
+                                CssFnctn(editor);
+                            case 16: // shift
+                            case 18: // option
+                            case 27: // escape
+                            case 33: // pageUp
+                            case 34: // pageDown
+                            case 35: // end
+                            case 36: // home
+                            case 37: // left
+                            case 38: // up
+                            case 39: // right
+                            case 40: // down
+                            case 91: // control
+                                break;
 
-                        //     default:
-                        //         placeholder.style.display = "none";                                                                
-                        // }        
+                            default:
+                                // placeholder.style.display = "none";                                                                
+                        }        
+
+                        if (document.activeElement && document.activeElement.className.indexOf("wysiwyg-editor") > -1) {
+                            var firstChildRow = document.activeElement.children[0];
+                            if (firstChildRow && firstChildRow.className.indexOf("aui-editor__row") < 0) {
+                              firstChildRow.className = "aui-editor__row";
+                            }
+                        }                    
                   
                         // Ask master
                         if( on_keydown && on_keydown(key, character, shiftKey, altKey, ctrlKey, metaKey) === false )
