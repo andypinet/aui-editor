@@ -66,11 +66,7 @@
     }
     .wysiwyg-editor {
         // ie bug
-        > p:first-child {
-            margin: 0;
-            display: block;
-        }
-        > p:first-child + p {
+        > p {
             margin: 0;
             display: block;
         }

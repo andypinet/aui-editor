@@ -50,10 +50,7 @@
     line-height: 1; }
     .aui-editor--mystyle .app-toolbar .aui-button svg {
       fill: #8492A6; }
-.aui-editor .wysiwyg-editor > p:first-child {
-  margin: 0;
-  display: block; }
-.aui-editor .wysiwyg-editor > p:first-child + p {
+.aui-editor .wysiwyg-editor > p {
   margin: 0;
   display: block; }
 .aui-editor__row {

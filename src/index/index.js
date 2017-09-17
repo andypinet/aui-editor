@@ -3,6 +3,12 @@ import "./wysiwyg.js"
 import "./wysiwyg-editor.js"
 
 var iconbuttons = {};
+iconbuttons.emoji = `
+<button type="button" class="aui-button" editor-action="emoji">
+<svg t="1505636244032" class="icon" style="" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2430" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="18"><defs><style type="text/css"></style></defs><path d="M510.944 960c-247.04 0-448-200.96-448-448s200.992-448 448-448 448 200.96 448 448-200.96 448-448 448z m0-832c-211.744 0-384 172.256-384 384s172.256 384 384 384 384-172.256 384-384-172.256-384-384-384z" p-id="2431"></path><path d="M512 773.344c-89.184 0-171.904-40.32-226.912-110.624-10.88-13.92-8.448-34.016 5.472-44.896 13.888-10.912 34.016-8.48 44.928 5.472 42.784 54.688 107.136 86.048 176.512 86.048 70.112 0 134.88-31.904 177.664-87.552 10.784-14.016 30.848-16.672 44.864-5.888 14.016 10.784 16.672 30.88 5.888 44.864C685.408 732.32 602.144 773.344 512 773.344zM368 515.2c-26.528 0-48-21.472-48-48v-64c0-26.528 21.472-48 48-48s48 21.472 48 48v64c0 26.496-21.504 48-48 48zM656 515.2c-26.496 0-48-21.472-48-48v-64c0-26.528 21.504-48 48-48s48 21.472 48 48v64c0 26.496-21.504 48-48 48z" p-id="2432"></path></svg>
+</button>
+`;
+
 iconbuttons.bold = `
 <button type="button" class="aui-button" editor-action="bold">
     <svg viewBox="0 0 11 15" class="aui-icon aui-icon--bold" width="14" height="14" aria-hidden="true" style="height: 14px; width: 14px;"><title></title><g><path d="M2 12.025V8h4.418c1.19 0 2.415.562 2.415 2.012s-1.608 2.013-2.9 2.013H2zM2 2h4.336c1 0 1.814.888 1.814 2 0 .89-.814 2-1.814 2H2V2zm8.192 1.9c0-2.146-1.744-3.89-3.888-3.89 0 0-3.97-.01-5.137-.01C0 0 0 1.167 0 1.167v11.666C0 14 1.167 14 1.167 14l5.572.01c2.33 0 4.23-1.86 4.23-4.148 0-1.388-.7-2.618-1.77-3.372.614-.688.99-1.596.99-2.59z" fill-rule="evenodd"></path></g></svg>    
@@ -88,8 +94,7 @@ iconbuttons.removeFormat = `
 </button>
 `;
 
-var icons = `${iconbuttons.bold}${iconbuttons.italic}${iconbuttons.strikethrough}
-${iconbuttons.insertOrderedList}${iconbuttons.insertUnorderedList}${iconbuttons.removeFormat}`;
+var icons = `${iconbuttons.emoji}${iconbuttons.strikethrough}${iconbuttons.removeFormat}`;
 
 let UiExampleEditor =  {
     template:  `<div class="" >
@@ -98,11 +103,11 @@ let UiExampleEditor =  {
         <div ref="editor" class="aui-editor aui-editor--mystyle">     
             <div class="app-toolbar">${icons}</div>          
             <textarea editor-textarea ref="textarea" name="editor" 
-                readonly="readonly" placeholder="Type your text here..."></textarea>    
+                readonly="readonly" placeholder=" "></textarea>    
         </div>
         <button class="aui-button aui-button--default" id="send" type="button" 
         style="margin-top: 15px; float: right;"
-        :disabled="disableSend">发送</button>    
+        :disabled="disableSend">submit</button>    
     </div>
 </form>
 </div>`
@@ -120,24 +125,17 @@ function initBasicCommand(wysiwygeditor, event, name, action) {
     }   
 }
 
+
 function initToolBar(wysiwygeditor, $refs, options) {
     var dom = {};
     dom.toolbar = $refs.editor.AuifindSelectorFromChildren(".app-toolbar");
 
     dom.toolbar.addEventListener("click", function(event) {
-        initBasicCommand(wysiwygeditor, event, 'bold');
+        initBasicCommand(wysiwygeditor, event, 'emoji', function() {
+            wysiwygeditor.shell.insertHTML("<hr style='width: 30px; height: 30px; display: inline-block; margin: 0; border: none; background-size: 100%; background-image: url(http://file.digitaling.com/eImg/uimages/20170105/1483591496870347.jpg), url(https://static.zhilizhili.com/static/3828461873613813290.jpg)' />");
+        });
         initBasicCommand(wysiwygeditor, event, 'italic');
         initBasicCommand(wysiwygeditor, event, 'strikethrough');
-        initBasicCommand(wysiwygeditor, event, 'insertOrderedList', function() {
-            // fix no keydown 
-            wysiwygeditor.dom.placeholder.style.display = "none";
-            wysiwygeditor.shell.insertList(true);
-        });
-        initBasicCommand(wysiwygeditor, event, 'insertUnorderedList', function() {
-            // fix no keydown 
-            wysiwygeditor.dom.placeholder.style.display = "none";
-            wysiwygeditor.shell.insertList(false);
-        });
         initBasicCommand(wysiwygeditor, event, 'removeFormat');
     });
 }
@@ -145,9 +143,9 @@ function initToolBar(wysiwygeditor, $refs, options) {
 function togglePlaceHolder(editorshell, $refs, options) {
     var html = editorshell.getHTML();
     
-    console.log('------------------------------------');
-    console.log(html);
-    console.log('------------------------------------');
+    // console.log('------------------------------------');
+    // console.log(html);
+    // console.log('------------------------------------');
 
     if (html.length < 1 ||
         html.replace(/<br\s*[\/]?>/gi,'').length < 1 ||

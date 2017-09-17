@@ -1265,9 +1265,12 @@
         // Command structure
         callUpdates = function( selection_destroyed ) {
             // Remove IE11 workaround
-            if( trailingDiv ) {                
+            if( trailingDiv ) {    
                 if (node_wysiwyg) {
-                    node_wysiwyg.removeChild( trailingDiv );
+                    try {
+                        node_wysiwyg.removeChild( trailingDiv );
+                    } catch(e) {                        
+                    }
                 }
                 trailingDiv = null;
             }
