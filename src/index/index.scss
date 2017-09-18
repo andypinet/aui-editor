@@ -52,7 +52,13 @@
 .aui-editor {
     &--mystyle {
         .app-toolbar {
-            border-bottom: 1px solid $aui-brand-light-sliver;
+            // border-bottom: 1px solid $aui-brand-light-sliver;
+            &::after {
+                content: "";
+                display: block;
+                height: 1px;
+                background-color: #ffdbe2;
+            }
             .aui-button {
                 vertical-align: middle;
                 text-align: center;
@@ -74,5 +80,19 @@
     &__row {
         margin: 0;
         display: block;
+    }
+}
+
+
+#app.pink-style {
+    button {
+        color: #F596AA;        
+    }
+
+    .aui-editor--mystyle .app-toolbar .aui-button svg {
+        transition: fill .4s ease;    
+        &:hover {
+            fill: #F596AA;
+        }
     }
 }

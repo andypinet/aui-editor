@@ -178,9 +178,6 @@
                                 // 最后一个是图片时
                  
                                 if (selection.anchorNode.parentNode.nodeName.toLowerCase() == "div" && selection.anchorNode.parentNode.className != "wysiwyg-wrapper") {
-                                    console.log('------------------------------------');
-                                    console.log("sds");
-                                    console.log('------------------------------------');
                                     range.setStartAfter(selection.anchorNode.parentNode.children[selection.anchorNode.parentNode.children.length - 1]);
                                     range.setEndAfter(selection.anchorNode.parentNode.children[selection.anchorNode.parentNode.children.length - 1]);
                                 } else {

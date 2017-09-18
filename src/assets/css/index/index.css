@@ -41,18 +41,28 @@
   /* https://developer.mozilla.org/de/docs/Web/CSS/%3A%3A-moz-placeholder */
   line-height: 1; }
 
-.aui-editor--mystyle .app-toolbar {
-  border-bottom: 1px solid #99A9BF; }
-  .aui-editor--mystyle .app-toolbar .aui-button {
-    vertical-align: middle;
-    text-align: center;
-    padding: 7px 7px 5px;
-    line-height: 1; }
-    .aui-editor--mystyle .app-toolbar .aui-button svg {
-      fill: #8492A6; }
+.aui-editor--mystyle .app-toolbar::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background-color: #ffdbe2; }
+.aui-editor--mystyle .app-toolbar .aui-button {
+  vertical-align: middle;
+  text-align: center;
+  padding: 7px 7px 5px;
+  line-height: 1; }
+  .aui-editor--mystyle .app-toolbar .aui-button svg {
+    fill: #8492A6; }
 .aui-editor .wysiwyg-editor > p {
   margin: 0;
   display: block; }
 .aui-editor__row {
   margin: 0;
   display: block; }
+
+#app.pink-style button {
+  color: #F596AA; }
+#app.pink-style .aui-editor--mystyle .app-toolbar .aui-button svg {
+  transition: fill .4s ease; }
+  #app.pink-style .aui-editor--mystyle .app-toolbar .aui-button svg:hover {
+    fill: #F596AA; }

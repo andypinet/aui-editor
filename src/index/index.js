@@ -115,7 +115,15 @@ let UiExampleEditor =  {
 
 function initBasicCommand(wysiwygeditor, event, name, action) {
     var selector = `[editor-action="${name}"]`;
-    if (event.target.matches(selector) || event.target.parentNode.matches(selector)) {        
+    
+
+    var element = event.target;
+    var parents = [];
+    while (element.parentNode && element.parentNode.className != 'app-toolbar') {
+        parents.push(element = element.parentNode);
+    }   
+
+    if (parents.length > 0 && parents[parents.length - 1].matches(selector)) {        
         if (action) {
             action();
         } else {
@@ -137,9 +145,6 @@ function initToolBar(wysiwygeditor, $refs, options) {
                     style='width: 30px; height: 30px; display: inline-block; margin: 0; border: none;' 
                         onerror="this.className = 'load-error'; this.title='图挂了'; " title='' />`);
 
-            console.log('------------------------------------');
-            console.log("click");
-            console.log('------------------------------------');
         });
         initBasicCommand(wysiwygeditor, event, 'italic');
         initBasicCommand(wysiwygeditor, event, 'strikethrough');
@@ -149,11 +154,7 @@ function initToolBar(wysiwygeditor, $refs, options) {
 
 function togglePlaceHolder(editorshell, $refs, options) {
     var html = editorshell.getHTML();
-    
-    // console.log('------------------------------------');
-    // console.log(html);
-    // console.log('------------------------------------');
-
+        
     if (html.length < 1 ||
         html.replace(/<br\s*[\/]?>/gi,'').length < 1 ||
         html.replace(/<div><br\s*[\/]?><\/div>/gi,'').length < 1) {
