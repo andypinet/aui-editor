@@ -333,7 +333,7 @@
                             case  8: // backspace                                
                             case 13: // enter     
                                 // e.preventDefault();
-                                // document.execCommand('formatBlock', false, 'p');
+                                // document.execCommand('insertHTML', false, '<br><br>');
                             case 16: // shift
                             case 18: // option
                             case 27: // escape

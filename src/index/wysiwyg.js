@@ -1193,10 +1193,12 @@
                 return false;
 
             // for webkit, mozilla, opera
-            if( window.getSelection )
-            {
+            if( window.getSelection ) {
                 // Buggy, call within 'try/catch'
                 try {
+                    console.log('------------------------------------');
+                    console.log("sds");
+                    console.log('------------------------------------');
                     if( document.queryCommandSupported && ! document.queryCommandSupported(command) )
                         return false;
                     return document.execCommand( command, false, param );

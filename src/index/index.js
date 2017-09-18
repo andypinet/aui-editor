@@ -132,7 +132,14 @@ function initToolBar(wysiwygeditor, $refs, options) {
 
     dom.toolbar.addEventListener("click", function(event) {
         initBasicCommand(wysiwygeditor, event, 'emoji', function() {
-            wysiwygeditor.shell.insertHTML("<hr style='width: 30px; height: 30px; display: inline-block; margin: 0; border: none; background-size: 100%; background-image: url(http://file.digitaling.com/eImg/uimages/20170105/1483591496870347.jpg), url(https://static.zhilizhili.com/static/3828461873613813290.jpg)' />");
+
+            wysiwygeditor.shell.insertHTML(`<img src='http://file.digitaling.com/eImg/uimages/20170105/1483591496870347.jpg' 
+                    style='width: 30px; height: 30px; display: inline-block; margin: 0; border: none;' 
+                        onerror="this.className = 'load-error'; this.title='图挂了'; " title='' />`);
+
+            console.log('------------------------------------');
+            console.log("click");
+            console.log('------------------------------------');
         });
         initBasicCommand(wysiwygeditor, event, 'italic');
         initBasicCommand(wysiwygeditor, event, 'strikethrough');
